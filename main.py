@@ -6,10 +6,12 @@ import shutil
 app = FastAPI()
 
 # Allow your React app (running on localhost:5173) to talk to this API
+# Allow your React app to talk to this API
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # In production, restrict this to your actual frontend URL
-    allow_credentials=True,
+    # CHANGE THIS LINE to your exact Vercel link (No slash at the end!)
+    allow_origins=["https://dummy-job-portal-frontend.vercel.app"], 
+    allow_credentials=False, # Changed to False for better compatibility
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -49,3 +51,4 @@ async def submit_application(
     print("--------------------------------------------------")
     
     return response_data
+
